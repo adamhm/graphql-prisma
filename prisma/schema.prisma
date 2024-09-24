@@ -20,4 +20,12 @@ model User {
   age   Int
   posts Post[]
 }
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  body      String
+  published Boolean
+  author    User?   @relation(fields: [authorId], references: [id])
+  authorId  Int?
 }
